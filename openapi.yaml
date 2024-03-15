@@ -1,0 +1,477 @@
+openapi: 3.0.1
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Root
+      operationId: root_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /send_prompt/:
+    post:
+      summary: Send Prompt
+      operationId: send_prompt_send_prompt__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenAIParams'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /post_audio_get/:
+    get:
+      summary: Get Audio
+      operationId: get_audio_post_audio_get__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /post_audio/:
+    post:
+      summary: Post Audio
+      operationId: post_audio_post_audio__post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_post_audio_post_audio__post'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /reset:
+    get:
+      summary: Reset Conversation
+      operationId: reset_conversation_reset_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /get_issue_details:
+    get:
+      summary: Get Issue Details
+      operationId: get_issue_details_get_issue_details_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /get_issue_list:
+    get:
+      summary: Get Issue List
+      operationId: get_issue_list_get_issue_list_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /update_acceptance_criteria:
+    put:
+      summary: Update Acceptance Criteria
+      operationId: update_acceptance_criteria_update_acceptance_criteria_put
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /get_all_repos:
+    get:
+      summary: Get All Repos
+      operationId: get_all_repos_get_all_repos_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /push_scripts:
+    put:
+      summary: Push Test Scripts
+      operationId: push_test_scripts_push_scripts_put
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestScript'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /generate_from_openapispec:
+    post:
+      summary: Generate From Openapispec
+      operationId: generate_from_openapispec_generate_from_openapispec_post
+      parameters:
+        - name: prompt_message
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Prompt Message
+        - name: training_id
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Training Id
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_generate_from_openapispec_generate_from_openapispec_post'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /train_model:
+    post:
+      summary: Train Model
+      operationId: train_model_train_model_post
+      parameters:
+        - name: prompt_message
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Prompt Message
+        - name: title
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Title
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /find_trained_model:
+    get:
+      summary: Get Trained Model With Id
+      operationId: get_trained_model_with_id_find_trained_model_get
+      parameters:
+        - name: search_title
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Search Title
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /find_all_trained_models:
+    get:
+      summary: Get All Trained Modesl
+      operationId: get_all_trained_modesl_find_all_trained_models_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /get_synthetic_data:
+    get:
+      summary: Getfakedata
+      operationId: getFakeData_get_synthetic_data_get
+      parameters:
+        - name: testdata_type
+          in: query
+          required: true
+          schema:
+            type: string
+            title: Testdata Type
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /get_test_data:
+    get:
+      summary: Get Test Data
+      operationId: get_test_data_get_test_data_get
+      parameters:
+        - name: testdata_id
+          in: query
+          required: true
+          schema:
+            type: integer
+            title: Testdata Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /signin:
+    post:
+      summary: Login For Access Token
+      operationId: login_for_access_token_signin_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginParams'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /signout:
+    post:
+      summary: Invalidate Current Token
+      operationId: invalidate_current_token_signout_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - OAuth2PasswordBearer: []
+  /signup:
+    post:
+      summary: Register User
+      operationId: register_user_signup_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupParams'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /refreshtoken:
+    post:
+      summary: Refresh Token
+      operationId: refresh_token_refreshtoken_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+        - OAuth2PasswordBearer: []
+components:
+  schemas:
+    Body_generate_from_openapispec_generate_from_openapispec_post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+        - file
+      title: Body_generate_from_openapispec_generate_from_openapispec_post
+    Body_post_audio_post_audio__post:
+      properties:
+        file:
+          type: string
+          format: binary
+          title: File
+      type: object
+      required:
+        - file
+      title: Body_post_audio_post_audio__post
+    GenAIParams:
+      properties:
+        prompt_message:
+          type: string
+          title: Prompt Message
+        training_id:
+          type: string
+          title: Training Id
+      type: object
+      required:
+        - prompt_message
+        - training_id
+      title: GenAIParams
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    LoginParams:
+      properties:
+        username:
+          anyOf:
+            - type: string
+          title: Username
+        password:
+          anyOf:
+            - type: string
+          title: Password
+      type: object
+      title: LoginParams
+    SignupParams:
+      properties:
+        username:
+          anyOf:
+            - type: string
+          title: Username
+        password:
+          anyOf:
+            - type: string
+          title: Password
+        c_password:
+          anyOf:
+            - type: string
+          title: C Password
+      type: object
+      title: SignupParams
+    TestScript:
+      properties:
+        name:
+          type: string
+          title: Name
+        commit_message:
+          type: string
+          title: Commit Message
+        content:
+          type: string
+          title: Content
+        branch:
+          type: string
+          title: Branch
+        repo_url:
+          type: string
+          title: Repo Url
+      type: object
+      required:
+        - name
+        - commit_message
+        - content
+        - branch
+        - repo_url
+      title: TestScript
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+  securitySchemes:
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: signin

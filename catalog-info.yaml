@@ -1,0 +1,36 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: genai-suite
+  title: GenAI Suite
+  description: "The service powering the GenAI Suite plugin, managed with Terraformon Azure App Service."
+  tags:
+    - terraform
+    - app-service
+  links:
+    - url: https://nextgen-prod-genaisuite.azurewebsites.net
+      title: Default domain
+    - url: https://portal.azure.com/#@vanickdigital3.onmicrosoft.com/resource/subscriptions/114ad516-92b1-4162-8bbc-07d30b40744f/resourceGroups/rylan_mccarty-nextgen-prod/providers/Microsoft.Web/sites/nextgen-prod-genaisuite/appServices
+      title: Azure App Service
+  annotations:
+    github.com/project-slug: NextGen-DX-Catalyst/genai-suite
+spec:
+  type: service
+  lifecycle: experimental
+  owner: infrastructure
+  system: system:genai-suite
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: genai-suite-api
+  title: GenAI Suite API
+  description: GenAI powered test suite generation and automation.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: chris.duckels
+  system: genai-suite
+  definition:
+    $openapi: ./openapi.yaml
+    # $openapi: https://nextgen-prod-genaisuite.azurewebsites.net/openapi.json

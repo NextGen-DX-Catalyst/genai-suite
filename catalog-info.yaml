@@ -4,9 +4,6 @@ metadata:
   name: genai-suite
   title: GenAI Suite
   description: "The service powering the GenAI Suite plugin, managed with Terraformon Azure App Service."
-  tags:
-    - terraform
-    - app-service
   links:
     - url: https://nextgen-prod-genaisuite.azurewebsites.net
       title: Default domain
@@ -17,8 +14,10 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: infrastructure
+  owner: user:christopher.duckels
   system: system:genai-suite
+  providesApis:
+    - genai-suite-api
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -29,7 +28,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
-  owner: chris.duckels
+  owner: user:christopher.duckels
   system: genai-suite
   definition:
     $openapi: ./openapi.yaml

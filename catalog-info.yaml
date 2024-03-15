@@ -32,4 +32,17 @@ spec:
   system: genai-suite
   definition:
     $openapi: ./openapi.yaml
-    # $openapi: https://nextgen-prod-genaisuite.azurewebsites.net/openapi.json
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-plugin-genai-testdata
+  title: '@concentrix/plugin-genai-testdata'
+  description: Frontend plugin for generating test data.
+  tags:
+    - backstage-plugin
+    - genai
+  spec:
+    lifecycle: production
+    type: backstage-frontend-plugin
+    owner: group:infrastructure
